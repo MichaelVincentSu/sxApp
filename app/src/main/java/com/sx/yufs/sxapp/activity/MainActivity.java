@@ -111,7 +111,6 @@ public void getList(){
         AllRequest.getInstance().getLoginInfo(loginParaSubscriber,"系统管理员", ThreeDESUtils.encryptMode("1qaz@WSX"));
 
 
-
        /* HttpSu okHttpTest = new HttpSu(MainActivity.this);
         Retrofit retrofit = okHttpTest.initRetrofit();
         RequestI login =  retrofit.create(RequestI.class);
