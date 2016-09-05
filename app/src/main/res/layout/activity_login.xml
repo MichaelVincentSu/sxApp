@@ -5,8 +5,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/size_35"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/size_64"
+    android:paddingRight="@dimen/size_64"
     android:paddingTop="@dimen/size_35"
     tools:context="com.sx.yufs.sxapp.activity.LoginActivity">
 
