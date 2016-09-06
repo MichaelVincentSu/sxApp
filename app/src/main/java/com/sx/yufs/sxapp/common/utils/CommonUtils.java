@@ -1,14 +1,21 @@
 package com.sx.yufs.sxapp.common.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.sx.yufs.sxapp.R;
 import com.sx.yufs.sxapp.webapi.core.BaseRestApi;
 
 import java.lang.reflect.Array;
@@ -129,26 +136,26 @@ public class CommonUtils {
      * @param context
      * @return
      */
-//    public static Dialog createLoadingDialog(Context context) {
-//        LayoutInflater inflater = LayoutInflater.from(context);
-//        View v = inflater.inflate(R.layout.zh_loading_dialog, null);// 得到加载view
-//        LinearLayout layout = (LinearLayout) v
-//                .findViewById(R.id.zh_dialog_view);// 加载布局
-//        // main.xml中的ImageView
-//        ImageView spaceshipImage = (ImageView) v
-//                .findViewById(R.id.zh_dialogimg);
-//        // 加载动画
-//        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
-//                context, R.anim.zh_loading_animation);
-//        // 使用ImageView显示动画
-//        spaceshipImage.startAnimation(hyperspaceJumpAnimation);
-//
-//        Dialog loadingDialog = new Dialog(context, R.style.loading_dialog);// 创建自定义样式dialog
-//        loadingDialog.setCancelable(true);
-//        loadingDialog.setCanceledOnTouchOutside(false);//点击屏幕不消失
-//        loadingDialog.setContentView(layout);// 设置布局
-//        return loadingDialog;
-//    }
+    public static Dialog createLoadingDialog(Context context) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.loading_dialog, null);// 得到加载view
+        LinearLayout layout = (LinearLayout) v
+                .findViewById(R.id.zh_dialog_view);// 加载布局
+        // main.xml中的ImageView
+        ImageView spaceshipImage = (ImageView) v
+                .findViewById(R.id.zh_dialogimg);
+        // 加载动画
+        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
+                context, R.anim.zh_loading_animation);
+        // 使用ImageView显示动画
+        spaceshipImage.startAnimation(hyperspaceJumpAnimation);
+
+        Dialog loadingDialog = new Dialog(context, R.style.loading_dialog);// 创建自定义样式dialog
+        loadingDialog.setCancelable(true);
+        loadingDialog.setCanceledOnTouchOutside(false);//点击屏幕不消失
+        loadingDialog.setContentView(layout);// 设置布局
+        return loadingDialog;
+    }
 
     /**
      * 二维码Dialog
