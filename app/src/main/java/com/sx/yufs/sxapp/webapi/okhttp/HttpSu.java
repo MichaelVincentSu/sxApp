@@ -1,7 +1,6 @@
 package com.sx.yufs.sxapp.webapi.okhttp;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.sx.yufs.sxapp.SxApplication;
@@ -71,7 +70,7 @@ public class HttpSu {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request originalRequest = chain.request();
-                if (TextUtils.isEmpty(userSharedPrefence.getToken())) {
+                if (!userSharedPrefence.hasToken()) {
                     Request authorised = originalRequest.newBuilder()
 //                            .addHeader("Content-Type", "application/json")
                             .addHeader("Content-Type", "application/x-www-form-urlencoded")

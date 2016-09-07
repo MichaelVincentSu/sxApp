@@ -34,6 +34,23 @@ public class UserSharedPrefence {
     }
 
     /**
+     * 设置是否需要token
+     */
+    public void setHasToken(boolean b) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("hasToken", b);
+        editor.commit();
+    }
+
+    /**
+     * 是否需要token
+     * @return
+     */
+    public boolean hasToken() {
+        return sharedPreferences.getBoolean("hasToken", false);
+    }
+
+    /**
      * 设置是否登录
      */
     public void setToken(String token) {

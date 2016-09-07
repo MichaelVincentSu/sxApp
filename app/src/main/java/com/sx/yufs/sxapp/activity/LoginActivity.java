@@ -92,6 +92,7 @@ public class LoginActivity extends BaseActivity  {
                 CommonUtils.ShowToast(LoginActivity.this,loginPara.getUsername(), Toast.LENGTH_SHORT);
                 dl.cancel();
                 userSharedPrefence.setToken(loginPara.getToken());
+                userSharedPrefence.setHasToken(true);
             }
         };
         AllRequest.getInstance().getLoginInfo(loginParaSubscriber,"系统管理员", ThreeDESUtils.encryptMode("1qaz@WSX"));
