@@ -1,6 +1,5 @@
 package com.sx.yufs.sxapp.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -35,7 +34,7 @@ public class LoginActivity extends BaseActivity  {
     @InjectView(R.id.password)
     EditText passwordEditText;
 //    private UserSharedPrefence userSharedPrefence;
-    private Dialog dl;
+   // private Dialog dl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +66,13 @@ public class LoginActivity extends BaseActivity  {
         password = ThreeDESUtils.encryptMode(password);
         Log.e("username:", username);
         Log.e("password:", password);
-        try {
+        /*try {
             dl = CommonUtils.createLoadingDialog(LoginActivity.this);
             dl.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
+        CommonUtils.showLoadingDialog(LoginActivity.this);
         Subscriber<LoginPara> loginParaSubscriber = new Subscriber<LoginPara>() {
             @Override
             public void onCompleted() {
@@ -84,13 +84,13 @@ public class LoginActivity extends BaseActivity  {
             @Override
             public void onError(Throwable e) {
                 CommonUtils.ShowToast(LoginActivity.this,e.getMessage()+"", Toast.LENGTH_SHORT);
-                dl.cancel();
+                CommonUtils.cancelLoadingDialog();
             }
 
             @Override
             public void onNext(LoginPara loginPara) {
                 CommonUtils.ShowToast(LoginActivity.this,loginPara.getUsername(), Toast.LENGTH_SHORT);
-                dl.cancel();
+                CommonUtils.cancelLoadingDialog();
                 userSharedPrefence.setToken(loginPara.getToken());
                 userSharedPrefence.setHasToken(true);
             }

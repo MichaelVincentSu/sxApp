@@ -130,13 +130,37 @@ public class CommonUtils {
         return false;
     }
 
+    private static Dialog loadingDialog;
+
+    public static void showLoadingDialog(Context context){
+        try {
+            if (loadingDialog != null) {
+                loadingDialog.cancel();
+                loadingDialog = null;
+            }
+
+            loadingDialog = createLoadingDialog(context);
+            loadingDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cancelLoadingDialog(){
+        try {
+            loadingDialog.cancel();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 自定义的progressDialog
      *
      * @param context
      * @return
      */
-    public static Dialog createLoadingDialog(Context context) {
+    private static Dialog createLoadingDialog(Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.loading_dialog, null);// 得到加载view
         LinearLayout layout = (LinearLayout) v
